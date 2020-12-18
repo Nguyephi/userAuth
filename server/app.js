@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const authRoute = require('./routes/auth');
 const app = express();
-// const cors = require('cors');
 
 app.use(express.static('./client/public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// app.use(cors());
+app.use('/api/user', authRoute)
 
 app.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'client/public/index.html'), function (err) {
