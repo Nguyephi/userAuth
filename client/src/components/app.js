@@ -6,7 +6,9 @@ import {
     Link
 } from "react-router-dom";
 
-import AuthContainer from './UserAuth/AuthContainer';
+import AuthContainer from './UserAuth/AuthContainer.js';
+import RegisterForm from './UserAuth/RegisterForm.js';
+import LoginForm from './UserAuth/LoginForm.js';
 
 export default class App extends Component {
     render() {
@@ -17,7 +19,22 @@ export default class App extends Component {
                         exact
                         path='/register'
                         render={(props) => (
-                            <AuthContainer {...props} />
+                            <AuthContainer {...props}>
+                                {(props) => (
+                                    <RegisterForm {...props} />
+                                )}
+                            </AuthContainer>
+                        )}
+                    />
+                    <Route
+                        exact
+                        path='/login'
+                        render={(props) => (
+                            <AuthContainer {...props}>
+                                {(props) => (
+                                    <LoginForm {...props} />
+                                )}
+                            </AuthContainer>
                         )}
                     />
                 </Switch>
