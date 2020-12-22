@@ -22,7 +22,6 @@ export default function AuthContainer(props) {
 
     return (
         <div>
-            {/* {props.render({})} */}
             {props.children({ asyncAuth })}
         </div>
     )
